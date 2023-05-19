@@ -1,29 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useRouter } from "expo-router"
-import { View, ImageBackground, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import {useAuthRequest, makeRedirectUri,} from "expo-auth-session"
 import { api } from '../src/lib/api';
-import { styled } from "nativewind"
-
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold,
-} from "@expo-google-fonts/roboto"
-
-import {
-  BaiJamjuree_700Bold
-} from "@expo-google-fonts/bai-jamjuree"
 
 
-import blurBg from "../src/assets/bg-blur.png"
-import Stripes from "../src/assets/stripes.svg"
 import Logo from "../src/assets/logo.svg"
 
-
-const StyledStripes = styled(Stripes )
 
 // Endpoint
 const discovery = {
@@ -32,13 +16,9 @@ const discovery = {
   revocationEndpoint: 'https://github.com/settings/connections/applications/24d71206d5aa1c207491',
 };
 
+
 export default function App() {
     const router = useRouter()
-  const [hasLoaded, ] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-    BaiJamjuree_700Bold
-  })
 
   const [request, response, signInWithGithub] = useAuthRequest(
     {
@@ -75,17 +55,10 @@ export default function App() {
   }
   }, [response]);
 
-  if(!hasLoaded) {
-    return null;
-  }
   return (
-    <ImageBackground 
-      source={blurBg} 
-      className='relative px-8 py-10 bg-gray-900 flex-1 items-center'
-      imageStyle={{ position: "absolute", left: "-100%"}}
+    <View 
+      className='px-8 py-10 flex-1 items-center'
       >
-      <StyledStripes className="absolute left-2" />
-
       <View className="flex-1 items-center  justify-center gap-6">
         <Logo />
 
@@ -104,7 +77,7 @@ export default function App() {
       </View>
 
       <Text className='text-center font-body text-sm leading-relaxed text-gray-200'>Feito com ❤️ no NLW da Rocketseat</Text>
-      <StatusBar style="light" translucent/>
-    </ImageBackground>
+      
+    </View>
   );
 }
