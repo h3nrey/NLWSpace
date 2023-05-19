@@ -8,8 +8,8 @@ export async function GET(request: NextRequest) {
   const registerResponse = await api.post('/register', {
     code,
   })
-  const { token } = registerResponse.data
 
+  const { token } = registerResponse.data
   const redirectURL = new URL('/', request.url)
 
   const expireDays = 30

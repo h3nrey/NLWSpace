@@ -24,6 +24,7 @@ app.register(authRoutes)
 app
   .listen({
     port,
+    host: '::',
   })
   .then(() => {
     console.log(`Server runing on port: ${port} 👍`)
