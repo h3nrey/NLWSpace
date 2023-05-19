@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import logo from '../assets/logo.svg'
+import Link from 'next/link'
 
 export default function Hero() {
   return (
@@ -14,12 +15,12 @@ export default function Hero() {
           Colecione momentos marcantes da sua jornada e compartilhe (se quiser)
           com o mundo!
         </p>
-        <a
-          href=""
+        <Link
+          href="/memories/new"
           className="text-small inline-block rounded-full bg-green-500 px-5 py-3 font-alt uppercase leading-none text-black hover:bg-green-600"
         >
           CADASTRAR LEMBRAÇA
-        </a>
+        </Link>
       </div>
     </div>
   )
